@@ -31,17 +31,20 @@
         (else
          (+ 1 (length? (cdr list))))))
 
-(define (value? list pos)
-  (cond ((= pos (- (length? list) (- (length? list) 1)))
+(define (player-selection matrix i j)
+  (cond ((= i 1)
+         (player-selection-aux (car matrix) j))
+        (else
+          (player-selection (cdr matrix) (- i 1) j))))
+
+(define (player-selection-aux list counter)
+  (cond ((= counter 1)
          (car list))
-        ( else
-          1)))
-
-(define (player-selection i j)
-  (cond ((= (length? '(1 2 3 4)) i)
-         (value? '(1 2 3 4) i))))
+        (else
+         (player-selection-aux (cdr list) (- counter 1)))))
   
-
+;;(define (bot-selection matrix i j))
+  
         
          
         
