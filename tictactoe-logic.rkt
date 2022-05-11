@@ -67,6 +67,10 @@
 (define (greedy-bot-selection matrix)
   (selection matrix 0 (greedy-row matrix 1) (greedy-column matrix)))
 
+;; Funcion que retorna las coordenadas i,j mas cercanas a un valor dentro de la matriz.
+(define (greedy-algorithm-coords matrix)
+  (list (greedy-row matrix 1) (greedy-column matrix)))
+
 ;; Funcion voraz para elegir la fila.
 ;; val: valor de retorno (0 para retornar la fila escogida y 1 para retornar el numero de fila) 
 (define (greedy-row matrix val)
