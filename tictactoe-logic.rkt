@@ -23,6 +23,28 @@
          r)
         ( else
           (build-matrix-aux (cons '() r) c))))
+
+;; Funcion ramdon para elegir 8 posibles lugares alrededor de X o O.
+(define (ran-num)
+  (cond ((equal? (random 7) 0)
+         0)
+        ((equal? (random 7) 1)
+         1)
+        ((equal? (random 7) 2)
+         2)
+        ((equal? (random 7) 3)
+         3)
+        ((equal? (random 7) 4)
+         4)
+        ((equal? (random 7) 5)
+         5)
+        ((equal? (random 7) 6)
+         6)
+        ((equal? (random 7) 7)
+         7)
+        (else
+         (ran-num))))
+        
 ;;__________________________________________________________________________
 
 ;; Funciones para tratamiento de listas
