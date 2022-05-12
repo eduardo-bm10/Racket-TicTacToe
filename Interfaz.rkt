@@ -76,6 +76,7 @@
 
 ;Crea el grid
 (define (Gridcreator Fila Columna Filaaux Columnaaux)
+(send frame show #t)
   (cond [(equal?  Filaaux (+ Fila 1))];Se generaron todas las filas
         
         [(equal? Columnaaux (+ Columna 1));Se generaron todas las columnas de una fila
