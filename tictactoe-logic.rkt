@@ -105,7 +105,8 @@
 
 (provide Changeelement
          Fin?
-         Empate?)
+         Empate?
+         greedybegin)
          
 
 ;-------------------------------------GREEDY ALGORITHM------------------------------------------
@@ -205,6 +206,21 @@
         (else
          (selection-aux (cdr list) (- j 1)))))
 ;;____________________________________________________________________________
+;Algoritmo para inicializar el voraz
+(define (greedybegin matriz fila columna filaaux columnaaux)
+  (cond [(equal? filaaux fila) (greedy-algorithm-coords matriz)]
+        [(equal? columnaaux columna) (greedybegin matriz fila columna (+ filaaux 1) 0)]
+        [(null? (list-ref (list-ref matriz filaaux) columnaaux))
+         (cond [(Fin? (cdr (Changeelement '() matriz filaaux columnaaux 0)) (car (Changeelement '() matriz filaaux columnaaux 0)) 0 0)
+                (list filaaux columnaaux)]
+               [(Fin? (cdr (Changeelement '() matriz filaaux columnaaux 1)) (car (Changeelement '() matriz filaaux columnaaux 1)) 0 1)
+                (list filaaux columnaaux)]
+               [else(greedybegin matriz fila columna filaaux (+ columnaaux 1))]
+         )]
+        [else (greedybegin matriz fila columna filaaux (+ columnaaux 1))]
+  )
+)
+
 
 ;; Algoritmo voraz de seleccion de la maquina.
 (define (bot-greedy-algorithm matrix)
