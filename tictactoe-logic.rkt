@@ -222,56 +222,14 @@
 )
 
 
-;; Algoritmo voraz de seleccion de la maquina.
+;; matrix: La matriz sobre la que se selecciona
+(define (greedy-bot-selection matrix)
+  (selection matrix 0 (greedy-row matrix 1) (greedy-column matrix)))
+
+;; Funcion que retorna las coordenadas i,j mas cercanas a un valor dentro de la matriz.
 (define (greedy-algorithm-coords matrix)
-  (greedy-algorithm-selection (greedy-algorithm-candidates matrix)))
+  (list (greedy-row matrix 1) (greedy-column matrix)))
 
-;; Funcion que retorna una lista con todas las posiciones vecinas de la marca X o O.
-(define (greedy-algorithm-candidates matrix)
-  (candidates-filter1 (list (list (- (greedy-row matrix 1) 1) (- (greedy-column matrix) 1))
-        (list (- (greedy-row matrix 1) 1) (greedy-column matrix))
-        (list (- (greedy-row matrix 1) 1) (+ (greedy-column matrix) 1))
-        (list (greedy-row matrix 1) (- (greedy-column matrix) 1))
-        (list (greedy-row matrix 1) (+ (greedy-column matrix) 1))
-        (list (+ (greedy-row matrix 1) 1) (- (greedy-column matrix) 1))
-        (list (+ (greedy-row matrix 1) 1) (greedy-column matrix))
-        (list (+ (greedy-row matrix 1) 1) (+ (greedy-column matrix) 1))) '() matrix))
-
-(define (candidates-filter1 list finalList matrix)
-  (cond ((null? list)
-         (candidates-filter2 matrix finalList '()))
-        ((and (not (zero? (caar list))) (not (zero? (cadar list))))
-         (candidates-filter1 (cdr list) (cons (car list) finalList) matrix))
-        (else
-         (candidates-filter1 (cdr list) finalList matrix))))
-
-(define (candidates-filter2 matrix list finalList)
-  (cond ((null? list)
-         finalList)
-        ((equal? (get-value matrix (car list) 1 1) '())
-         (candidates-filter2 matrix (cdr list) (cons (car list) finalList)))
-        (else
-         (candidates-filter2 matrix (cdr list) finalList))))
-
-;; Funcion que escoge aleatoriamente uno de los candidatos encontrados.
-(define (greedy-algorithm-selection candidates)
-  (cond ((= (ran-num) 0)
-         (first candidates))
-        ((= (ran-num) 1)
-         (second candidates))
-        ((= (ran-num) 2)
-         (third candidates))
-        ((= (ran-num) 3)
-         (fourth candidates))
-        ((= (ran-num) 4)
-         (fifth candidates))
-        ((= (ran-num) 5)
-         (sixth candidates))
-        ((= (ran-num) 6)
-         (seventh candidates))
-        (else
-         (eighth candidates))))
-  
 ;; Funcion voraz para elegir la fila.
 ;; val: valor de retorno (0 para retornar la fila escogida y 1 para retornar el numero de fila) 
 (define (greedy-row matrix val)
@@ -302,6 +260,8 @@
   (cond ((null? row)
          0)
         ((or (equal? (car row) 0) (equal? (car row) 1))
+         (+ counter 1))
+        ((or (equal? (cadr row) 0) (equal? (cadr row) 1))
          counter)
         (else
          (greedy-column-comp (cdr row) (+ counter 1)))))
