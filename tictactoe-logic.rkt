@@ -103,8 +103,12 @@
    )
  )
 
+(provide Changeelement
+         Fin?
+         Empate?)
+         
+
 ;-------------------------------------GREEDY ALGORITHM------------------------------------------
->>>>>>> 60a164fd1a3b5f3b36e68effc148404d1e3c5df1
 ;;Funcion para iniciar el juego Tic Tac Toe
 
 (define (TTT rows columns)
@@ -284,9 +288,4 @@
         ((or (equal? (car row) 0) (equal? (car row) 1))
          counter)
         (else
-<<<<<<< HEAD
          (greedy-column-comp (cdr row) (+ counter 1)))))
-=======
-         (greedy-column-comp (cdr row) (+ counter 1)))))
-
->>>>>>> 60a164fd1a3b5f3b36e68effc148404d1e3c5df1
