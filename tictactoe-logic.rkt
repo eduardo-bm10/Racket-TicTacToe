@@ -1,28 +1,6 @@
 #lang racket
 (require racket/gui/base)
-(require "Interfaz.rkt")
 ;---------------------------ADMINISTRADOR TICTACTOE-------------------------
-
-;Función revisa constantemente terminación ´del usuario 
-(define(Adminuser matriz)
-  (cond[(Fin? (cdr matriz) (car matriz) 0 1)
-        (Winner 1)]
-       [(Empate? matriz) (Winner 2) ]
-       [else (AdminCPU matriz (greedybegin matriz (length matriz) (length (car matriz)) 0 0))]))
-
-;Función que revisa constantemente terminación del CPU
-(define (AdminCPU matriz coords)
-  (SelectedCPU (car coords) (cadr coords) (Changeelement '() matriz (car coords) (cadr coords) 0))
-  (CPUfinish? (Changeelement '() matriz (car coords) (cadr coords) 0) )
-)
-
-(define (CPUfinish? matriz)
-  (cond [(Fin? (cdr matriz) (car matriz) 0 0)
-         (Winner 0)]
-        [(Empate? matriz) (Winner 2)]
-   )
- )
-
 
 ;Función para el fin del juego
 (define(Fin? matriz Fila Columna Jugador)
