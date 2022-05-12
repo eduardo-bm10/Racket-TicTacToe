@@ -223,7 +223,7 @@
 
 
 ;; Algoritmo voraz de seleccion de la maquina.
-(define (bot-greedy-algorithm matrix)
+(define (greedy-algorithm-coords matrix)
   (greedy-algorithm-selection (greedy-algorithm-candidates matrix)))
 
 ;; Funcion que retorna una lista con todas las posiciones vecinas de la marca X o O.
