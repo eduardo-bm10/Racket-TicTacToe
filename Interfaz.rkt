@@ -1,6 +1,6 @@
-#lang racket/gui
+#lang racket
 (require racket/gui/base)
-(require "tictactoe-logic.rkt")
+(require "Interfaz.rkt")
 
 ;---------------------------INTERFAZ GRÁFICA VENTANA 1-------------------------------
 ;Crea la ventana de inicio
@@ -35,8 +35,7 @@
 ;Muestra la ventana de inicio
 (send frame1 show #t)
 
-
-;---------------------------INTERFAZ GRÁFICA-------------------------------
+;---------------------------INTERFAZ GRÁFICA VENTANA 2-------------------------------
 
 ;Creación Window
 (define frame (new frame% [label "Tarea 1"]))
@@ -76,7 +75,7 @@
 
 ;Crea el grid
 (define (Gridcreator Fila Columna Filaaux Columnaaux)
-(send frame show #t)
+  (send frame show #t)
   (cond [(equal?  Filaaux (+ Fila 1))];Se generaron todas las filas
         
         [(equal? Columnaaux (+ Columna 1));Se generaron todas las columnas de una fila
@@ -219,4 +218,4 @@
           (new message% [parent frame]
                        [label "Empate!!"])]
         )
-  )
+  )                      
